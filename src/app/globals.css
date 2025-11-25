@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: #000000;
+  --background: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Video element styling */
+video {
+  object-fit: cover;
+}
+
+/* Button base styles */
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full
+         hover:scale-[1.02] transition-transform duration-200 ease-out;
+}
+
+.btn-primary-dark {
+  @apply inline-flex items-center gap-2 px-6 py-3 bg-black text-white font-medium rounded-full
+         hover:scale-[1.02] transition-transform duration-200 ease-out;
+}
+
+/* Section spacing */
+.section-padding {
+  @apply py-16 md:py-24 lg:py-32 px-4 md:px-8 lg:px-16;
+}
+
+/* Overlay gradient */
+.overlay-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+/* Ken Burns effect */
+@keyframes kenburns {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.kenburns {
+  animation: kenburns 20s ease-in-out infinite;
+}
