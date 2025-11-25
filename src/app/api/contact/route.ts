@@ -19,7 +19,7 @@ export async function POST(request: Request) {
         Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "ADDVO Website <info@addvo.se>",
+        from: "ADDVO Website <onboarding@resend.dev>",
         to: "leopham00@gmail.com",
         subject: `ADDVO Site Inquiry from ${name}`,
         html: `
