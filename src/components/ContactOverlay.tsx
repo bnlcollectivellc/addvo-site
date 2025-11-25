@@ -34,21 +34,26 @@ export default function ContactOverlay() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Create mailto link
-    const subject = encodeURIComponent(
-      `Contact from ${formData.name}${formData.service ? ` - ${formData.service}` : ""}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || "Not provided"}\nService: ${formData.service || "Not specified"}\n\nMessage:\n${formData.message}`
-    );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    window.location.href = `mailto:info@addvo.se?subject=${subject}&body=${body}`;
-
-    // Show success state
-    setTimeout(() => {
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 500);
+    }
   };
 
   const handleClose = () => {

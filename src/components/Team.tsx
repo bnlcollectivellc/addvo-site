@@ -11,6 +11,7 @@ const teamMembers = [
     title: "CEO",
     photo: "/images/team/vanessa.png",
     bio: "The ultimate multitasker! When she's not brainstorming brilliant business ideas, she's designing for her own children's clothing brand, VANVO. Obsessed with fashion and self-development - soaks up podcasts and books like they're going out of style!",
+    zoom: false,
   },
   {
     id: "samuel",
@@ -18,6 +19,7 @@ const teamMembers = [
     title: "Partnership Growth Lead",
     photo: "/images/team/samuel.png",
     bio: 'A tech gadget geek by day, gym enthusiast by night, and a relationship-building legend 24/7. People can\'t get enough of his genuine, honest vibes... and neither can sales! When he\'s not closing deals, he\'s probably closing his fitness rings or sharing a laugh with friends.',
+    zoom: "110",
   },
   {
     id: "lucas",
@@ -25,13 +27,7 @@ const teamMembers = [
     title: "Country Sales Manager",
     photo: "/images/team/lucas.jpeg",
     bio: "Gadget guru, tech trendsetter, and innovation enthusiast. He's the guy who's always a step ahead, whether it's the latest must-have device or the next big tech breakthrough. Lucas lives on the cutting edge, constantly hunting down what's new and making it look effortless.",
-  },
-  {
-    id: "emilia",
-    name: "Emilia Gautruche",
-    title: "Regional Sales Manager",
-    photo: "/images/team/emilia.jpeg",
-    bio: "Her love for all things French runs deep, from the language to the culture, and she always makes time for her cherished second house in the south of France. Whether she's spending time with her family or savoring the simple pleasures of life in France, Emilia always finds a way to make it special.",
+    zoom: false,
   },
   {
     id: "chanaka",
@@ -39,6 +35,15 @@ const teamMembers = [
     title: "Chief Data & Technology Officer",
     photo: "/images/team/chanaka.png",
     bio: "Bio coming soon.",
+    zoom: "115",
+  },
+  {
+    id: "emilia",
+    name: "Emilia Gautruche",
+    title: "Regional Sales Manager",
+    photo: "/images/team/emilia.jpeg",
+    bio: "Her love for all things French runs deep, from the language to the culture, and she always makes time for her cherished second house in the south of France. Whether she's spending time with her family or savoring the simple pleasures of life in France, Emilia always finds a way to make it special.",
+    zoom: false,
   },
 ];
 
@@ -46,7 +51,7 @@ export default function Team() {
   const [selectedMember, setSelectedMember] = useState(teamMembers[0]);
 
   return (
-    <section id="team" className="section-padding bg-white">
+    <section id="team" className="pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-24 lg:pb-32 px-4 md:px-8 lg:px-16 bg-white">
       <div className="max-w-5xl mx-auto">
         {/* Heading */}
         <motion.div
@@ -72,27 +77,81 @@ export default function Team() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12"
+          className="mb-12"
         >
-          {teamMembers.map((member) => (
-            <button
-              key={member.id}
-              onClick={() => setSelectedMember(member)}
-              className={`relative w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden transition-all duration-300 ${
-                selectedMember.id === member.id
-                  ? "opacity-100 ring-4 ring-black ring-offset-4"
-                  : "opacity-50 hover:opacity-80"
-              }`}
-            >
-              <Image
-                src={member.photo}
-                alt={member.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 80px, (max-width: 1024px) 112px, 128px"
-              />
-            </button>
-          ))}
+          {/* Mobile: 3 on first row, 2 on second row */}
+          <div className="flex flex-wrap justify-center gap-4 md:hidden">
+            {/* First row - 3 members */}
+            <div className="flex justify-center gap-4 w-full">
+              {teamMembers.slice(0, 3).map((member) => (
+                <button
+                  key={member.id}
+                  onClick={() => setSelectedMember(member)}
+                  className={`relative w-24 h-24 rounded-full overflow-hidden transition-all duration-300 ${
+                    selectedMember.id === member.id
+                      ? "opacity-100 ring-4 ring-black ring-offset-4"
+                      : "opacity-50 hover:opacity-80"
+                  }`}
+                >
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                    style={member.zoom ? { transform: `scale(1.${member.zoom.toString().slice(-2)})` } : undefined}
+                    sizes="80px"
+                  />
+                </button>
+              ))}
+            </div>
+            {/* Second row - 2 members */}
+            <div className="flex justify-center gap-4 w-full">
+              {teamMembers.slice(3, 5).map((member) => (
+                <button
+                  key={member.id}
+                  onClick={() => setSelectedMember(member)}
+                  className={`relative w-24 h-24 rounded-full overflow-hidden transition-all duration-300 ${
+                    selectedMember.id === member.id
+                      ? "opacity-100 ring-4 ring-black ring-offset-4"
+                      : "opacity-50 hover:opacity-80"
+                  }`}
+                >
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                    style={member.zoom ? { transform: `scale(1.${member.zoom.toString().slice(-2)})` } : undefined}
+                    sizes="80px"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: all in one row */}
+          <div className="hidden md:flex justify-center gap-8">
+            {teamMembers.map((member) => (
+              <button
+                key={member.id}
+                onClick={() => setSelectedMember(member)}
+                className={`relative w-36 h-36 lg:w-40 lg:h-40 rounded-full overflow-hidden transition-all duration-300 ${
+                  selectedMember.id === member.id
+                    ? "opacity-100 ring-4 ring-black ring-offset-4"
+                    : "opacity-50 hover:opacity-80"
+                }`}
+              >
+                <Image
+                  src={member.photo}
+                  alt={member.name}
+                  fill
+                  className="object-cover"
+                  style={member.zoom ? { transform: `scale(1.${member.zoom.toString().slice(-2)})` } : undefined}
+                  sizes="(max-width: 1024px) 112px, 128px"
+                />
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Selected Member Info */}

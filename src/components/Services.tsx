@@ -59,21 +59,21 @@ const services = [
     title: "AI Receptionist",
     description:
       "Smart AI-driven reception services that automate calls, messages and scheduling, giving your customers fast, accurate support around the clock.",
-    media: null,
+    media: "/images/services/ai-receptionist.jpg",
     isVideo: false,
   },
   {
     title: "VoIP – Voice Over IP",
     description:
       "Cloud-based telephony with secure, high-quality voice services that scale with your business and keep your team reachable on any device, anywhere.",
-    media: null,
+    media: "/images/services/voip.jpg",
     isVideo: false,
   },
   {
     title: "Company Mobile Solutions",
     description:
       "Complete mobility solutions for modern teams. From corporate devices to managed services, helping you streamline operations and keep everyone connected.",
-    media: null,
+    media: "/images/services/mobile-solutions.jpg",
     isVideo: false,
   },
 ];
@@ -93,7 +93,7 @@ function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group bg-grey-100 rounded-2xl overflow-hidden"
+      className="group bg-grey-100 rounded-2xl overflow-hidden flex flex-col h-full"
     >
       {/* Media */}
       <div className="relative aspect-[16/10] overflow-hidden">
@@ -123,26 +123,27 @@ function ServiceCard({
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-semibold text-black mb-3">{service.title}</h3>
-        <p className="text-grey-600 mb-4 text-sm leading-relaxed">
+        <p className="text-grey-600 text-sm leading-relaxed flex-grow">
           {service.description}
         </p>
         <button
           onClick={openContact}
-          className="inline-flex items-center gap-2 text-black font-medium hover:opacity-70 transition-opacity"
+          className="btn-primary-dark text-sm mt-4 self-start"
         >
           Get in touch
           <svg
-            width="16"
-            height="16"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
+            <circle cx="12" cy="12" r="11" fill="white" stroke="white" strokeWidth="2" />
             <path
-              d="M7 17L17 7M17 7H7M17 7V17"
-              stroke="currentColor"
+              d="M10 8L14 12L10 16"
+              stroke="black"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -229,19 +230,20 @@ function AccordionItem({
               <p className="text-grey-600 mb-4">{service.description}</p>
               <button
                 onClick={openContact}
-                className="inline-flex items-center gap-2 text-black font-medium hover:opacity-70 transition-opacity"
+                className="btn-primary-dark text-sm"
               >
                 Get in touch
                 <svg
-                  width="16"
-                  height="16"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
+                  <circle cx="12" cy="12" r="11" fill="white" stroke="white" strokeWidth="2" />
                   <path
-                    d="M7 17L17 7M17 7H7M17 7V17"
-                    stroke="currentColor"
+                    d="M10 8L14 12L10 16"
+                    stroke="black"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -260,7 +262,7 @@ export default function Services() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="services" className="section-padding bg-white">
+    <section id="services" className="py-8 md:py-12 lg:py-16 px-4 md:px-8 lg:px-16 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <motion.h2

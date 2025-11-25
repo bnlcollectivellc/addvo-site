@@ -84,28 +84,10 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-white">
-      <div className="max-w-6xl mx-auto">
-        {/* Intro Text */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-lg md:text-xl text-grey-700 max-w-3xl mx-auto mb-4">
-            From telephony and IT to print, conference solutions, and office
-            supplies, we cover your entire operational ecosystem.
-          </p>
-          <p className="text-lg md:text-xl text-grey-700 max-w-3xl mx-auto">
-            Whatever your organisation needs, we deliver it with precision, speed
-            and truly scalable expertise.
-          </p>
-        </motion.div>
-
+    <section ref={sectionRef} className="py-9 md:py-14 lg:py-18 px-5 md:px-9 lg:px-18 bg-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -115,7 +97,7 @@ export default function Stats() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-grey-500 mb-2">
+              <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-grey-500 mb-2">
                 <CountUp
                   end={stat.value}
                   suffix={stat.suffix}
