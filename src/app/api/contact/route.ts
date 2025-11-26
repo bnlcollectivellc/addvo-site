@@ -20,7 +20,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: "ADDVO Website <onboarding@resend.dev>",
-        to: "leopham00@gmail.com",
+        to: "bnlcollectivellc@gmail.com",
         subject: `ADDVO Site Inquiry from ${name}`,
         html: `
           <h2>${service}</h2>

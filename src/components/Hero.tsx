@@ -40,7 +40,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="text-lg md:text-xl text-white/90 mb-4 max-w-3xl"
         >
-          We&apos;re a Swedish IT consultancy built to outpace change — connecting
+          We&apos;re a Swedish IT consultancy built to outpace change, connecting
           ambitious companies with elite tech talent and tailored teams that
           don&apos;t just support growth, but accelerate it.
         </motion.p>

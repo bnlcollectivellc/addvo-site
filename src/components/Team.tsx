@@ -97,7 +97,7 @@ export default function Team() {
                     src={member.photo}
                     alt={member.name}
                     fill
-                    className="object-cover"
+                    className="object-cover grayscale"
                     style={member.zoom ? { transform: `scale(1.${member.zoom.toString().slice(-2)})` } : undefined}
                     sizes="80px"
                   />
@@ -120,7 +120,7 @@ export default function Team() {
                     src={member.photo}
                     alt={member.name}
                     fill
-                    className="object-cover"
+                    className="object-cover grayscale"
                     style={member.zoom ? { transform: `scale(1.${member.zoom.toString().slice(-2)})` } : undefined}
                     sizes="80px"
                   />
@@ -145,7 +145,7 @@ export default function Team() {
                   src={member.photo}
                   alt={member.name}
                   fill
-                  className="object-cover"
+                  className="object-cover grayscale"
                   style={member.zoom ? { transform: `scale(1.${member.zoom.toString().slice(-2)})` } : undefined}
                   sizes="(max-width: 1024px) 112px, 128px"
                 />
